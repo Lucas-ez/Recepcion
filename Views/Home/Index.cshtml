@@ -2,7 +2,84 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bienvenidos</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model IEnumerable<Recepcion.Models.Ingreso>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ingresos</h1>
+<hr />
+
+<table class="table table-striped" id="table-ingresos">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteDni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckInDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckOutDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteDni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteNombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckInDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOutDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(() => {
+            $('#table-ingresos').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No Hay información",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoFiltered": "(Filtrado de _Max_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            })
+        })
+    </script>
+}
