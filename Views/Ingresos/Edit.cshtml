@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <h4>Ingreso</h4>
 <hr />
@@ -39,7 +39,7 @@
                 <input asp-for="CheckOutDate" class="form-control" />
                 <span asp-validation-for="CheckOutDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group my-2">
                 <input type="submit" value="Guardar Cambios" class="btn btn-primary" />
             </div>
         </form>
@@ -47,7 +47,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Volver al Listado</a>
+    <a class="btn btn-warning" asp-action="Index">Volver al Listado</a>
 </div>
 
 @section Scripts {
