@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Recepcion.Data;
 
@@ -11,9 +12,11 @@ using Recepcion.Data;
 namespace Recepcion.Migrations
 {
     [DbContext(typeof(RecepcionContext))]
-    partial class RecepcionContextModelSnapshot : ModelSnapshot
+    [Migration("20230501140614_TablesIdentity")]
+    partial class TablesIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

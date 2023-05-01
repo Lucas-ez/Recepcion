@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Recepcion.Models;
 
 namespace Recepcion.Data
 {
-    public class RecepcionContext : DbContext
+  public class RecepcionContext : IdentityDbContext
+  {
+    public RecepcionContext(DbContextOptions<RecepcionContext> options)
+        : base(options)
     {
-        public RecepcionContext (DbContextOptions<RecepcionContext> options)
-            : base(options)
-        {
-        }
-
-        public DbSet<Recepcion.Models.Ingreso> Ingreso { get; set; } = default!;
     }
+
+    public DbSet<Recepcion.Models.Ingreso> Ingreso { get; set; } = default!;
+  }
 }

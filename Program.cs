@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Recepcion.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<RecepcionContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RecepcionContext") ?? throw new InvalidOperationException("Connection string 'RecepcionContext' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<RecepcionContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,6 +26,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
