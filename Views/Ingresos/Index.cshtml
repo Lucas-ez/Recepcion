@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped" id="table-ingresos">
     <thead>
         <tr>
             <th>
@@ -58,3 +58,31 @@
 }
     </tbody>
 </table>
+
+@section Scripts {
+  <script>
+    $(document).ready(() => {
+      $('#table-ingresos').DataTable({
+        language: {
+          "decimal": "",
+          "emptyTable" : "No Hay información",
+          "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+          "infoFiltered": "(Filtrado de _Max_ total entradas)",
+          "infoPostFix": "",
+          "thousands" : ",",
+          "lengthMenu" : "Mostrar _MENU_ Entradas",
+          "loadingRecords": "Cargando...",
+          "processing": "Procesando...",
+          "search" : "Buscar",
+          "zeroRecords":"Sin resultados encontrados",
+          "paginate" : {
+            "first": "Primero",
+            "last": "Ultimo",
+            "next": "Siguiente",
+            "previous" : "Anterior"
+          }
+        }
+      })
+    })
+  </script>
+}
