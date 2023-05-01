@@ -56,6 +56,11 @@ namespace Recepcion.Controllers
     {
       if (ModelState.IsValid)
       {
+          if (DateTime.Compare(ingreso.CheckInDate, ingreso.CheckOutDate) >= 0)
+          {
+              ViewBag.errorCheckIn = "El Check in debe ocurrir antes.";
+              return View(ingreso);
+          }
         _context.Add(ingreso);
         _context.SaveChanges();
         return RedirectToAction(nameof(Index));
