@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Recepcion.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<RecepcionContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RecepcionContext") ?? throw new InvalidOperationException("Connection string 'RecepcionContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
